@@ -1,0 +1,13 @@
+:root {
+  --color-fondo: #08111f;
+  --color-superficie: #101b2d;
+  --color-superficie-2: #162338;
+  --color-texto: #eef5ff;
+  --color-texto-suave: #9fb0c7;
+  --color-primario: #2dd4bf;
+  --color-secundario: #f59e0b;
+  --color-borde: rgba(148, 163, 184, 0.18);
+  --sombra-suave: 0 18px 42px rgba(0, 0, 0, 0.24);
+  --radio-sm: 8px;
+  --radio-md: 12px;
+}

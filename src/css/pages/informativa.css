@@ -1,0 +1,33 @@
+.pagina-informativa {
+  width: 100%;
+  min-height: 70vh;
+  margin: 0;
+  padding-bottom: 64px;
+  background: #f4f5f8;
+  color: #141821;
+}
+
+.pagina-informativa .encabezado-pagina {
+  color: #141821;
+}
+
+.pagina-informativa .encabezado-pagina p {
+  color: #5a18e8;
+}
+
+.pagina-informativa__contenido {
+  width: min(900px, calc(100% - 32px));
+  margin: 0 auto;
+  display: grid;
+  gap: 16px;
+  padding: 26px;
+  border: 0;
+  border-radius: var(--radio-md);
+  background: white;
+  color: #687080;
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
+}
+
+.pagina-informativa__contenido .q-icon {
+  color: #5a18e8;
+}

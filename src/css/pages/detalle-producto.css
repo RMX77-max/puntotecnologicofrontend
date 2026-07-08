@@ -1,0 +1,191 @@
+.pagina-detalle-producto {
+  width: 100%;
+  margin: 0;
+  padding: 34px 0 54px;
+  background: #f4f5f8;
+  color: #141821;
+}
+
+.detalle-producto__breadcrumb {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #7b8190;
+  font-weight: 800;
+}
+
+.detalle-producto__breadcrumb a:hover {
+  color: #5a18e8;
+}
+
+.detalle-producto {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(320px, 540px) 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.detalle-producto__contenido {
+  display: grid;
+  gap: 18px;
+}
+
+.detalle-producto__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.detalle-producto__meta span {
+  min-height: 30px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 11px;
+  color: #5a18e8;
+  border-radius: 999px;
+  background: rgba(90, 24, 232, 0.08);
+  font-weight: 900;
+}
+
+.detalle-producto__contenido h1 {
+  margin: 0;
+  font-size: clamp(34px, 5vw, 54px);
+  line-height: 1.02;
+  font-weight: 950;
+}
+
+.detalle-producto__contenido > p {
+  margin: 0;
+  color: #687080;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.detalle-producto__panel-compra {
+  display: grid;
+  gap: 16px;
+  padding: 20px;
+  border-radius: var(--radio-md);
+  background: white;
+  box-shadow: 0 18px 44px rgba(15, 23, 42, 0.1);
+}
+
+.detalle-producto__precio span {
+  display: block;
+  color: #8a90a0;
+  font-size: 13px;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.detalle-producto__precio strong {
+  display: block;
+  margin-top: 4px;
+  color: #5a18e8;
+  font-size: 42px;
+  line-height: 1;
+  font-weight: 950;
+}
+
+.detalle-producto__acciones {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.detalle-producto__beneficios {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.detalle-producto__beneficios article {
+  display: grid;
+  gap: 6px;
+  justify-items: center;
+  padding: 12px;
+  text-align: center;
+  color: #5f6675;
+  border-radius: 8px;
+  background: #f8f9fc;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.detalle-producto__beneficios .q-icon {
+  color: #5a18e8;
+  font-size: 24px;
+}
+
+.detalle-producto__bloque {
+  padding: 20px;
+  border: 0;
+  border-radius: var(--radio-md);
+  background: white;
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
+}
+
+.detalle-producto__bloque h2 {
+  margin: 0 0 12px;
+}
+
+.detalle-producto__bloque dl {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 0;
+}
+
+.detalle-producto__bloque dl div {
+  padding: 13px;
+  border-radius: 8px;
+  background: #f8f9fc;
+}
+
+.detalle-producto__bloque dt {
+  color: #7b8190;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.detalle-producto__bloque dd {
+  margin: 0;
+  color: #15171c;
+  font-weight: 800;
+}
+
+.detalle-producto__bloque article {
+  display: grid;
+  gap: 4px;
+  margin-top: 10px;
+}
+
+.detalle-producto__bloque article span {
+  color: #6f7685;
+}
+
+.detalle-relacionados {
+  color: #141821;
+}
+
+.detalle-relacionados .seccion-contenido__encabezado p {
+  color: #5a18e8;
+}
+
+@media (max-width: 900px) {
+  .detalle-producto {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .detalle-producto__acciones,
+  .detalle-producto__beneficios,
+  .detalle-producto__bloque dl {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,79 +1,71 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-toolbar>
-        <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />
+    <EncabezadoPrincipal
+      :categorias="catalogoStore.categorias"
+      :configuracion="configuracionStore.configuracion"
+      @abrir-menu="toggleLeftDrawer"
+    />
 
-        <q-toolbar-title> Quasar App </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
-      </q-toolbar>
-    </q-header>
-
-    <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
+    <q-drawer v-model="leftDrawerOpen" side="left" bordered class="drawer-catalogo">
       <q-list>
-        <q-item-label header> Essential Links </q-item-label>
+        <q-item-label header> Menu</q-item-label>
+        <q-item clickable v-ripple to="/" @click="leftDrawerOpen = false">
+          <q-item-section avatar><q-icon name="home" /></q-item-section>
+          <q-item-section>Inicio</q-item-section>
+        </q-item>
+        <q-item clickable v-ripple to="/catalogo" @click="leftDrawerOpen = false">
+          <q-item-section avatar><q-icon name="storefront" /></q-item-section>
+          <q-item-section>Catalogo</q-item-section>
+        </q-item>
+        <q-item clickable v-ripple to="/carrito" @click="leftDrawerOpen = false">
+          <q-item-section avatar><q-icon name="shopping_cart" /></q-item-section>
+          <q-item-section>Carrito</q-item-section>
+        </q-item>
 
-        <EssentialLink v-for="link in linksList" :key="link.title" v-bind="link" />
+        <q-separator spaced />
+        <q-item-label header>Categorias</q-item-label>
+        <q-item
+          v-for="categoria in catalogoStore.categorias"
+          :key="categoria.id"
+          clickable
+          v-ripple
+          :to="`/categoria/${categoria.slug}`"
+          @click="leftDrawerOpen = false"
+        >
+          <q-item-section avatar><q-icon :name="categoria.icono" /></q-item-section>
+          <q-item-section>{{ categoria.nombre }}</q-item-section>
+        </q-item>
       </q-list>
     </q-drawer>
 
     <q-page-container>
       <router-view />
     </q-page-container>
+
+    <PiePagina
+      :categorias="catalogoStore.categorias"
+      :configuracion="configuracionStore.configuracion"
+    />
   </q-layout>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import EssentialLink from 'components/EssentialLink.vue'
-
-const linksList = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev',
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework',
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev',
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev',
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev',
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev',
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev',
-  },
-]
+import { onMounted, ref } from 'vue'
+import EncabezadoPrincipal from 'components/layout/EncabezadoPrincipal.vue'
+import PiePagina from 'components/layout/PiePagina.vue'
+import { useCatalogoStore } from 'src/stores/catalogoStore'
+import { useConfiguracionStore } from 'src/stores/configuracionStore'
+import { useCarritoStore } from 'src/stores/carritoStore'
 
 const leftDrawerOpen = ref(false)
+const catalogoStore = useCatalogoStore()
+const configuracionStore = useConfiguracionStore()
+const carritoStore = useCarritoStore()
+
+onMounted(async () => {
+  carritoStore.cargarCarritoLocal()
+  await Promise.all([catalogoStore.cargarCatalogo(), configuracionStore.cargarConfiguracion()])
+})
 
 function toggleLeftDrawer() {
   leftDrawerOpen.value = !leftDrawerOpen.value

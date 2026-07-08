@@ -1,0 +1,22 @@
+.pagina-categoria {
+  width: 100%;
+  min-height: 70vh;
+  margin: 0;
+  padding-bottom: 54px;
+  background: #f4f5f8;
+  color: #141821;
+}
+
+.pagina-categoria .encabezado-pagina {
+  color: #141821;
+}
+
+.pagina-categoria .encabezado-pagina p {
+  color: #5a18e8;
+}
+
+.pagina-categoria > .grilla-productos,
+.pagina-categoria > .estado-catalogo {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+}

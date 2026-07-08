@@ -1,0 +1,46 @@
+.pagina-carrito {
+  width: 100%;
+  min-height: 70vh;
+  margin: 0;
+  padding-bottom: 54px;
+  background: #f4f5f8;
+  color: #141821;
+}
+
+.pagina-carrito .encabezado-pagina {
+  color: #141821;
+}
+
+.pagina-carrito .encabezado-pagina p {
+  color: #5a18e8;
+}
+
+.carrito-layout {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 22px;
+  align-items: start;
+}
+
+.pagina-carrito > .estado-catalogo {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  background: white;
+  color: #687080;
+  border: 0;
+  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
+}
+
+.carrito-layout__items,
+.carrito-layout__lateral {
+  display: grid;
+  gap: 14px;
+}
+
+@media (max-width: 980px) {
+  .carrito-layout {
+    grid-template-columns: 1fr;
+  }
+}
