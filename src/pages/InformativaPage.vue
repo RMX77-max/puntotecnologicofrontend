@@ -30,5 +30,5 @@ const titulos = {
 }
 const tituloPagina = computed(() => titulos[route.params.slug] || 'Pagina informativa')
 
-useMeta(() => ({ title: `${tituloPagina.value} | Mi PC Computadoras` }))
+useMeta(() => ({ title: `${tituloPagina.value} | Punto Tecnologico` }))
 </script>

@@ -1,4 +1,4 @@
-import { clienteApi } from './clienteApi'
+import { agregarSitioCatalogo, clienteApi } from './clienteApi'
 import { productosMock } from '../mocks/productosMock'
 
 const USAR_DATOS_MOCK = import.meta.env.VITE_USAR_DATOS_MOCK === 'true'
@@ -6,7 +6,7 @@ const USAR_DATOS_MOCK = import.meta.env.VITE_USAR_DATOS_MOCK === 'true'
 export async function obtenerProductos() {
   if (USAR_DATOS_MOCK) return productosMock.filter((producto) => producto.visible_catalogo)
 
-  return clienteApi.get('/public/productos')
+  return clienteApi.get(agregarSitioCatalogo('/public/productos'))
 }
 
 export async function obtenerProductoPorSlug(slug) {
@@ -14,7 +14,7 @@ export async function obtenerProductoPorSlug(slug) {
     return productosMock.find((producto) => producto.slug === slug && producto.visible_catalogo) || null
   }
 
-  return clienteApi.get(`/public/productos/${slug}`)
+  return clienteApi.get(agregarSitioCatalogo(`/public/productos/${slug}`))
 }
 
 export async function obtenerProductosRelacionados(productoBase) {

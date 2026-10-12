@@ -1,4 +1,4 @@
-.pagina-inicio {
+﻿.pagina-inicio {
   background: #f4f5f8;
   padding-bottom: 20px;
   color: #141821;
@@ -9,7 +9,7 @@
 }
 
 .pagina-inicio .seccion-contenido__encabezado p {
-  color: #5a18e8;
+  color: #00ff00;
 }
 
 .pagina-inicio .seccion-contenido__encabezado h2 {
@@ -17,7 +17,7 @@
 }
 
 .pagina-inicio .seccion-contenido__encabezado .q-btn {
-  color: #5a18e8 !important;
+  color: #00ff00 !important;
 }
 
 .pagina-inicio .grilla-categorias {
@@ -38,7 +38,7 @@
 
 .seccion-banner-productos__encabezado p {
   margin: 0 0 4px;
-  color: #5a18e8;
+  color: #00ff00;
   font-weight: 950;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -59,7 +59,7 @@
   display: block;
   margin: 10px auto 0;
   border-radius: 999px;
-  background: #2dd4bf;
+  background: #00ff00;
 }
 
 .seccion-banner-productos__contenido {
@@ -85,7 +85,7 @@
   border-radius: 8px;
   background:
     radial-gradient(circle at 82% 18%, rgba(255, 255, 255, 0.22), transparent 12rem),
-    linear-gradient(135deg, #111827, #5a18e8);
+    linear-gradient(135deg, #111827, #00ff00);
   box-shadow: 0 18px 42px rgba(15, 23, 42, 0.16);
 }
 
@@ -97,7 +97,7 @@
 }
 
 .seccion-banner-productos__banner .q-icon {
-  color: #ffcc00;
+  color: #ffd700;
 }
 
 .seccion-banner-productos__banner--con-imagen {
@@ -115,7 +115,7 @@
 }
 
 .seccion-banner-productos__banner span {
-  color: #2dd4bf;
+  color: #00ff00;
   font-size: 12px;
   font-weight: 950;
   letter-spacing: 0.1em;
@@ -167,12 +167,12 @@
   border-radius: 8px;
   background:
     radial-gradient(circle at 80% 15%, rgba(255, 255, 255, 0.22), transparent 18rem),
-    linear-gradient(135deg, #e0e7ff, #6d28d9 52%, #4f13d1);
+    linear-gradient(135deg, #e0e7ff, #00b800 52%, #141428);
   box-shadow: 0 18px 38px rgba(79, 19, 209, 0.16);
 }
 
 .banner-horizontal-home span {
-  color: #2dd4bf;
+  color: #00ff00;
   font-size: 12px;
   font-weight: 950;
   letter-spacing: 0.1em;
@@ -191,7 +191,7 @@
 }
 
 .banner-horizontal-home .q-icon {
-  color: #ffcc00;
+  color: #ffd700;
 }
 
 .banner-horizontal-home--con-imagen {
@@ -246,5 +246,165 @@
   .banner-horizontal-home {
     flex-direction: column;
     align-items: start;
+  }
+}
+
+/* Punto Tecnologico: home oscuro y banners solidos */
+.pagina-inicio {
+  background: #0b0b18;
+  color: #ffffff;
+}
+
+.pagina-inicio .seccion-contenido__encabezado p,
+.seccion-banner-productos__encabezado p,
+.banner-horizontal-home span,
+.seccion-banner-productos__banner span {
+  color: #19d84f;
+}
+
+.pagina-inicio .seccion-contenido__encabezado h2,
+.seccion-banner-productos__encabezado h2 {
+  color: #ffffff;
+}
+
+.seccion-banner-productos__encabezado h2::after,
+.pagina-inicio .seccion-contenido__encabezado .q-btn {
+  background: #19d84f;
+  color: #101020 !important;
+}
+
+.seccion-banner-productos__banner,
+.seccion-banner-productos--ancha .seccion-banner-productos__banner,
+.banner-horizontal-home {
+  background: #151528;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.24);
+}
+
+.seccion-banner-productos__banner--con-imagen,
+.banner-horizontal-home--con-imagen {
+  background: #101020;
+}
+
+.banner-horizontal-home .q-icon,
+.seccion-banner-productos__banner .q-icon {
+  color: #ffd700;
+}
+/* Wireframe Punto Tecnologico: ultimas busquedas */
+.ultimas-busquedas-home__lista {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.ultimas-busquedas-home__item {
+  min-height: 74px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 18px;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  background: #151528;
+  font-weight: 900;
+  transition:
+    border-color 0.18s ease,
+    background 0.18s ease,
+    transform 0.18s ease;
+}
+
+.ultimas-busquedas-home__item:hover {
+  color: #101020;
+  border-color: #19d84f;
+  background: #19d84f;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+  .ultimas-busquedas-home__lista {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .ultimas-busquedas-home__lista {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Punto Tecnologico: estructura gamer/comercial diferenciada */
+.pagina-inicio--punto .seccion-banner-productos {
+  padding-top: 28px;
+}
+
+.punto-zonas-home {
+  padding-top: 34px !important;
+  padding-bottom: 28px !important;
+}
+
+.punto-zonas-home__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.punto-zonas-home__item {
+  min-height: 170px;
+  display: grid;
+  align-content: end;
+  gap: 8px;
+  padding: 20px;
+  color: #ffffff;
+  border: 1px solid rgba(25, 216, 79, 0.32);
+  border-radius: 8px;
+  background: #151528;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.22);
+  transition:
+    border-color 0.18s ease,
+    background 0.18s ease,
+    transform 0.18s ease;
+}
+
+.punto-zonas-home__item:hover {
+  color: #101020;
+  border-color: #19d84f;
+  background: #19d84f;
+  transform: translateY(-3px);
+}
+
+.punto-zonas-home__item .q-icon {
+  color: #ffd700;
+}
+
+.punto-zonas-home__item:hover .q-icon {
+  color: #101020;
+}
+
+.punto-zonas-home__item span {
+  font-size: 20px;
+  font-weight: 950;
+  line-height: 1.05;
+}
+
+.punto-zonas-home__item small {
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.punto-zonas-home__item:hover small {
+  color: rgba(16, 16, 32, 0.78);
+}
+
+@media (max-width: 1000px) {
+  .punto-zonas-home__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .punto-zonas-home__grid {
+    grid-template-columns: 1fr;
   }
 }

@@ -9,7 +9,7 @@
     <div v-if="!categoriaActual" class="estado-catalogo">
       <q-icon name="category" size="52px" />
       <span>No encontramos esta categoria.</span>
-      <q-btn color="deep-purple-7" label="Ir al catalogo" to="/catalogo" />
+      <q-btn color="primary" label="Ir al catalogo" to="/catalogo" />
     </div>
 
     <div v-else-if="!productosCategoria.length" class="estado-catalogo">
@@ -47,6 +47,6 @@ const productosCategoria = computed(() =>
 )
 
 useMeta(() => ({
-  title: `${categoriaActual.value?.nombre || 'Categoria'} | Mi PC Computadoras`,
+  title: `${categoriaActual.value?.nombre || 'Categoria'} | Punto Tecnologico`,
 }))
 </script>

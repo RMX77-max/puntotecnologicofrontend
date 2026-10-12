@@ -2,7 +2,7 @@
   <footer class="pie-pagina" id="contacto">
     <div class="pie-pagina__contenido">
       <section class="pie-pagina__marca">
-        <h2>{{ configuracion?.nombre_tienda || 'Mi PC Computadoras' }}</h2>
+        <h2>{{ configuracion?.nombre_tienda || 'Punto Tecnologico' }}</h2>
         <p>{{ configuracion?.texto_footer || 'Catalogo tecnologico con cotizacion directa por WhatsApp.' }}</p>
       </section>
 
@@ -47,7 +47,7 @@
     </div>
 
     <div class="pie-pagina__copyright">
-      © {{ anioActual }} {{ configuracion?.nombre_tienda || 'Mi PC Computadoras' }}. Todos los derechos reservados.
+      © {{ anioActual }} {{ configuracion?.nombre_tienda || 'Punto Tecnologico' }}. Todos los derechos reservados.
     </div>
   </footer>
 </template>

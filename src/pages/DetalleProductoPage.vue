@@ -41,7 +41,7 @@
             <div class="detalle-producto__acciones">
               <q-btn
                 unelevated
-                color="deep-purple-7"
+                color="primary"
                 icon="add_shopping_cart"
                 label="Agregar a cotizacion"
                 @click="agregarProducto"
@@ -51,6 +51,7 @@
                 color="positive"
                 icon="chat"
                 label="Cotizar por WhatsApp"
+                :loading="cotizando"
                 @click="cotizarProducto"
               />
             </div>
@@ -74,7 +75,10 @@
           <section class="detalle-producto__bloque">
             <h2>Especificaciones</h2>
             <dl>
-              <div v-for="especificacion in productoActual.especificaciones" :key="especificacion.titulo">
+              <div
+                v-for="especificacion in productoActual.especificaciones"
+                :key="especificacion.titulo"
+              >
                 <dt>{{ especificacion.titulo }}</dt>
                 <dd>{{ especificacion.valor }}</dd>
               </div>
@@ -83,7 +87,10 @@
 
           <section class="detalle-producto__bloque">
             <h2>Delivery</h2>
-            <article v-for="opcionDelivery in configuracionStore.configuracion?.delivery" :key="opcionDelivery.titulo">
+            <article
+              v-for="opcionDelivery in configuracionStore.configuracion?.delivery"
+              :key="opcionDelivery.titulo"
+            >
               <strong>{{ opcionDelivery.titulo }}</strong>
               <span>{{ opcionDelivery.descripcion }}</span>
             </article>
@@ -112,11 +119,15 @@
         </div>
       </section>
     </template>
+    <q-banner v-if="urlWhatsapp" class="bg-green-1 text-green-10 q-ma-md">
+      Precio confirmado.
+      <a :href="urlWhatsapp" target="_blank" rel="noopener noreferrer">Abrir WhatsApp</a>
+    </q-banner>
   </q-page>
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useQuasar, useMeta } from 'quasar'
 import { useRoute } from 'vue-router'
 import GaleriaProducto from 'components/catalogo/GaleriaProducto.vue'
@@ -131,6 +142,14 @@ import 'src/css/pages/detalle-producto.css'
 
 const route = useRoute()
 const $q = useQuasar()
+const cotizando = ref(false)
+const urlWhatsapp = ref('')
+watch(
+  () => route.params.slug,
+  () => {
+    urlWhatsapp.value = ''
+  },
+)
 const catalogoStore = useCatalogoStore()
 const carritoStore = useCarritoStore()
 const configuracionStore = useConfiguracionStore()
@@ -150,18 +169,27 @@ const productosRelacionados = computed(() =>
     .slice(0, 4),
 )
 
-useMeta(() => ({ title: `${productoActual.value?.nombre || 'Producto'} | Mi PC Computadoras` }))
+useMeta(() => ({ title: `${productoActual.value?.nombre || 'Producto'} | Punto Tecnologico` }))
 
 function agregarProducto() {
   carritoStore.agregarProducto(productoActual.value)
   $q.notify({ type: 'positive', message: 'Producto agregado a la cotizacion' })
 }
 
-function cotizarProducto() {
-  abrirWhatsapp({
-    productosCotizacion: [{ ...productoActual.value, cantidad: 1 }],
-    totalCotizacion: productoActual.value.precio,
-    datosCliente: {},
-  })
+async function cotizarProducto() {
+  if (cotizando.value || !productoActual.value) return
+  cotizando.value = true
+  urlWhatsapp.value = ''
+  try {
+    const { url } = await abrirWhatsapp({
+      productosCotizacion: [{ ...productoActual.value, cantidad: 1 }],
+      datosCliente: {},
+    })
+    urlWhatsapp.value = url
+  } catch (error) {
+    $q.notify({ type: 'negative', message: error.message || 'No se pudo confirmar el precio.' })
+  } finally {
+    cotizando.value = false
+  }
 }
 </script>

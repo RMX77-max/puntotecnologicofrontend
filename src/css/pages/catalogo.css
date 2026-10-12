@@ -19,7 +19,7 @@
 }
 
 .pagina-busqueda .encabezado-pagina p {
-  color: #5a18e8;
+  color: #00ff00;
 }
 
 .busqueda-contenido {
@@ -35,7 +35,7 @@
 
 .catalogo-hero p {
   margin: 0 0 8px;
-  color: #5a18e8;
+  color: #00ff00;
   font-weight: 950;
   text-transform: uppercase;
 }
@@ -84,8 +84,8 @@
 .catalogo-chip--activo,
 .catalogo-chip:hover {
   color: white;
-  border-color: #5a18e8;
-  background: #5a18e8;
+  border-color: #00ff00;
+  background: #00ff00;
 }
 
 .catalogo-layout {
@@ -125,7 +125,7 @@
   place-items: center;
   color: white;
   border-radius: 8px;
-  background: linear-gradient(135deg, #5a18e8, #4f13d1);
+  background: linear-gradient(135deg, #00ff00, #141428);
 }
 
 .filtros-catalogo__encabezado strong,
@@ -185,7 +185,7 @@
 
 .q-menu .q-item:hover,
 .q-menu .q-item.q-manual-focusable--focused {
-  color: #5a18e8;
+  color: #00ff00;
   background: #f4f0ff;
 }
 
@@ -212,4 +212,51 @@
   .catalogo-toolbar__orden {
     width: 100%;
   }
+}
+
+/* Punto Tecnologico: catalogo oscuro */
+.pagina-catalogo {
+  background: #0b0b18;
+  color: #ffffff;
+}
+
+.catalogo-hero p,
+.catalogo-hero span,
+.filtros-catalogo__encabezado span,
+.catalogo-toolbar strong {
+  color: #c7cada;
+}
+
+.catalogo-hero h1,
+.filtros-catalogo__encabezado strong {
+  color: #ffffff;
+}
+
+.catalogo-chip,
+.filtros-catalogo,
+.catalogo-toolbar {
+  background: #151528;
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.catalogo-chip--activo,
+.catalogo-chip:hover {
+  color: #101020;
+  border-color: #19d84f;
+  background: #19d84f;
+}
+
+.filtros-catalogo__encabezado .q-icon {
+  color: #101020;
+  background: #19d84f;
+}
+
+.filtros-catalogo .q-field__control,
+.catalogo-toolbar .q-field__control {
+  background: #ffffff;
+}
+
+.catalogo-paginacion .q-btn {
+  color: #19d84f;
 }

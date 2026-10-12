@@ -9,7 +9,7 @@
     <div v-if="!productosEncontrados.length" class="estado-catalogo busqueda-contenido">
       <q-icon name="search_off" size="52px" />
       <span>No encontramos productos para tu busqueda.</span>
-      <q-btn color="deep-purple-7" label="Ver catalogo completo" to="/catalogo" />
+      <q-btn color="primary" label="Ver catalogo completo" to="/catalogo" />
     </div>
 
     <div v-else class="grilla-productos busqueda-contenido">
@@ -31,7 +31,7 @@ import TarjetaProducto from 'components/catalogo/TarjetaProducto.vue'
 import { useCatalogoStore } from 'src/stores/catalogoStore'
 import 'src/css/pages/catalogo.css'
 
-useMeta({ title: 'Buscar productos | Mi PC Computadoras' })
+useMeta({ title: 'Buscar productos | Punto Tecnologico' })
 
 const route = useRoute()
 const catalogoStore = useCatalogoStore()

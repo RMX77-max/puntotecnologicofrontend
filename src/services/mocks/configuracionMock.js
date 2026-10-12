@@ -1,5 +1,8 @@
+import logoPuntoTecnologico from 'src/assets/imagenes/marca/logo-punto-tecnologico.png'
+
 export const configuracionMock = {
-  nombre_tienda: 'Mi PC Computadoras',
+  nombre_tienda: 'Punto Tecnologico',
+  logo_url: logoPuntoTecnologico,
   whatsapp_principal: '59170000000',
   whatsapp_secundario: '59170000001',
   moneda: 'Bs',
@@ -9,26 +12,25 @@ export const configuracionMock = {
     tiktok: 'https://tiktok.com',
   },
   ubicacion: {
-    ciudad: 'Cochabamba, Bolivia',
-    direccion: 'MI PC Computadoras',
-    referencia: 'Ubicacion oficial de la tienda en Google Maps.',
+    ciudad: 'Bolivia',
+    direccion: 'Punto Tecnologico',
+    referencia: 'Atencion y disponibilidad coordinada por WhatsApp.',
     horarios: [
       { dias: 'Lunes a viernes', horas: '09:00 - 19:00' },
       { dias: 'Sabados', horas: '09:00 - 13:00' },
     ],
-    enlace_mapa: 'https://maps.app.goo.gl/C1WK7e7S4zr2U84y6',
-    mapa_embed_url: 'https://www.google.com/maps?q=-17.4044996,-66.1567093&z=17&output=embed',
+    enlace_mapa: '',
+    mapa_embed_url: '',
   },
-  texto_footer:
-    'Explorando la tecnologia y el diseno que estan dando forma al mundo del manana.',
+  texto_footer: 'Tecnologia, componentes y setups gamer con asesoria especializada.',
   delivery: [
     {
-      titulo: 'Delivery gratuito 24 hrs',
-      descripcion: 'A coordinar con el courier.',
+      titulo: 'Envios coordinados',
+      descripcion: 'Entrega segun disponibilidad y zona de cobertura.',
     },
     {
-      titulo: 'Delivery Express 20-30 min',
-      descripcion: 'Por pagar: MotoTaz, Santiago, Ciudad Jardin.',
+      titulo: 'Asesoria gamer',
+      descripcion: 'Te ayudamos a elegir piezas y perifericos para tu setup.',
     },
   ],
 }

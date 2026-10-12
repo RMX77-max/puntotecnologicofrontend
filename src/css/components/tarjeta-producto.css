@@ -65,7 +65,7 @@
 }
 
 .tarjeta-producto__badge--nuevo {
-  background: linear-gradient(135deg, #5a18e8, #2dd4bf);
+  background: linear-gradient(135deg, #00ff00, #00ff00);
 }
 
 .tarjeta-producto__overlay {
@@ -114,8 +114,8 @@
   align-items: center;
   min-height: 26px;
   padding: 0 9px;
-  color: #5a18e8;
-  background: rgba(90, 24, 232, 0.08);
+  color: #00ff00;
+  background: rgba(0, 255, 0, 0.1);
   border-radius: 999px;
   font-weight: 900;
 }
@@ -171,7 +171,7 @@
 }
 
 .tarjeta-producto__compra strong {
-  color: #5a18e8;
+  color: #00ff00;
   font-size: 24px;
   line-height: 1;
   font-weight: 950;
@@ -188,9 +188,9 @@
   border-radius: 50%;
   background:
     radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.34), transparent 24%),
-    linear-gradient(135deg, #7c3aed, #4f13d1);
+    linear-gradient(135deg, #00ff00, #141428);
   box-shadow:
-    0 14px 28px rgba(90, 24, 232, 0.3),
+    0 14px 28px rgba(0, 255, 0, 0.3),
     inset 0 0 0 1px rgba(255, 255, 255, 0.18);
   cursor: pointer;
   transition:
@@ -201,7 +201,7 @@
 .tarjeta-producto__boton-carrito:hover {
   transform: translateY(-3px) scale(1.04);
   box-shadow:
-    0 18px 34px rgba(90, 24, 232, 0.42),
+    0 18px 34px rgba(0, 255, 0, 0.42),
     inset 0 0 0 1px rgba(255, 255, 255, 0.24);
 }
 
@@ -252,9 +252,9 @@
 
 .tarjeta-producto__accion--detalle {
   color: white;
-  border: 1px solid #5a18e8;
-  background: linear-gradient(135deg, #6d28d9, #4f13d1);
-  box-shadow: 0 12px 22px rgba(90, 24, 232, 0.18);
+  border: 1px solid #00ff00;
+  background: linear-gradient(135deg, #00b800, #141428);
+  box-shadow: 0 12px 22px rgba(0, 255, 0, 0.18);
 }
 
 .tarjeta-producto__accion--cotizar {
@@ -268,7 +268,7 @@
 }
 
 .tarjeta-producto__accion--detalle:hover {
-  box-shadow: 0 16px 30px rgba(90, 24, 232, 0.26);
+  box-shadow: 0 16px 30px rgba(0, 255, 0, 0.26);
 }
 
 .tarjeta-producto__accion--cotizar:hover {
@@ -351,7 +351,7 @@
 .tarjeta-categoria:hover .tarjeta-categoria__contenido,
 .tarjeta-categoria:focus-visible .tarjeta-categoria__contenido {
   color: white;
-  background: linear-gradient(135deg, #5a18e8, #4f13d1);
+  background: linear-gradient(135deg, #00ff00, #141428);
 }
 
 .tarjeta-categoria h3 {
@@ -370,4 +370,117 @@
 .tarjeta-categoria:hover p,
 .tarjeta-categoria:focus-visible p {
   color: rgba(255, 255, 255, 0.82);
+}
+
+/* Punto Tecnologico: cards y botones solidos */
+.tarjeta-producto {
+  background: #151528;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.22);
+}
+
+.tarjeta-producto:hover {
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.28);
+}
+
+.tarjeta-producto__imagen {
+  background: #101020;
+}
+
+.tarjeta-producto__badge--oferta {
+  background: #ffd700;
+  color: #141428;
+}
+
+.tarjeta-producto__badge--nuevo {
+  background: #19d84f;
+  color: #101020;
+}
+
+.tarjeta-producto__overlay span {
+  color: #101020;
+  background: #ffffff;
+}
+
+.tarjeta-producto__marca {
+  color: #141428;
+  background: #b7f7c8;
+}
+
+.tarjeta-producto h3 {
+  color: #ffffff;
+}
+
+.tarjeta-producto p,
+.tarjeta-producto__descripcion {
+  color: #c7cada;
+}
+
+.tarjeta-producto__categoria,
+.tarjeta-producto__compra span {
+  color: #9ea3bb;
+}
+
+.tarjeta-producto__compra strong {
+  color: #19d84f;
+  text-shadow: none;
+}
+
+.tarjeta-producto__boton-carrito {
+  color: #101020;
+  background: #19d84f;
+  box-shadow: none;
+}
+
+.tarjeta-producto__boton-carrito:hover {
+  background: #ffd700;
+  box-shadow: none;
+}
+
+.tarjeta-producto__accion--detalle {
+  color: #101020;
+  border-color: #19d84f;
+  background: #19d84f;
+  box-shadow: none;
+}
+
+.tarjeta-producto__accion--detalle:hover {
+  color: #101020;
+  background: #ffd700;
+  border-color: #ffd700;
+  box-shadow: none;
+}
+
+.tarjeta-producto__accion--cotizar {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.22);
+  background: #242442;
+}
+
+.tarjeta-producto__accion--cotizar:hover {
+  color: #101020;
+  background: #19d84f;
+  box-shadow: none;
+}
+
+.estado-producto--disponible {
+  background: rgba(25, 216, 79, 0.16);
+  color: #5cf07f;
+}
+
+.tarjeta-categoria,
+.tarjeta-categoria__contenido {
+  background: #151528;
+  color: #ffffff;
+}
+
+.tarjeta-categoria p {
+  color: #c7cada;
+}
+
+.tarjeta-categoria:hover .tarjeta-categoria__contenido,
+.tarjeta-categoria:focus-visible .tarjeta-categoria__contenido {
+  background: #1f2038;
+  color: #ffffff;
 }

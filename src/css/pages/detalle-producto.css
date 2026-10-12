@@ -17,7 +17,7 @@
 }
 
 .detalle-producto__breadcrumb a:hover {
-  color: #5a18e8;
+  color: #00ff00;
 }
 
 .detalle-producto {
@@ -45,9 +45,9 @@
   display: inline-flex;
   align-items: center;
   padding: 0 11px;
-  color: #5a18e8;
+  color: #00ff00;
   border-radius: 999px;
-  background: rgba(90, 24, 232, 0.08);
+  background: rgba(0, 255, 0, 0.1);
   font-weight: 900;
 }
 
@@ -85,7 +85,7 @@
 .detalle-producto__precio strong {
   display: block;
   margin-top: 4px;
-  color: #5a18e8;
+  color: #00ff00;
   font-size: 42px;
   line-height: 1;
   font-weight: 950;
@@ -117,7 +117,7 @@
 }
 
 .detalle-producto__beneficios .q-icon {
-  color: #5a18e8;
+  color: #00ff00;
   font-size: 24px;
 }
 
@@ -173,7 +173,7 @@
 }
 
 .detalle-relacionados .seccion-contenido__encabezado p {
-  color: #5a18e8;
+  color: #00ff00;
 }
 
 @media (max-width: 900px) {

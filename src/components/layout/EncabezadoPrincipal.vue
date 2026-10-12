@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <q-header class="encabezado-principal">
     <div class="encabezado-principal__aviso">
       <span>Cotiza por WhatsApp</span>
@@ -9,9 +9,12 @@
     <q-toolbar class="encabezado-principal__barra">
       <q-btn flat dense round icon="menu" class="lt-md" @click="$emit('abrir-menu')" />
 
-      <router-link to="/" class="encabezado-principal__marca">
-        <q-icon name="important_devices" size="30px" />
-        <span>{{ configuracion?.nombre_tienda || 'Mi PC Computadoras' }}</span>
+      <router-link to="/" class="encabezado-principal__marca" :aria-label="configuracion?.nombre_tienda || 'Punto Tecnologico'">
+        <img
+          class="encabezado-principal__logo"
+          :src="configuracion?.logo_url || logoPuntoTecnologico"
+          :alt="`${configuracion?.nombre_tienda || 'Punto Tecnologico'} logo`"
+        />
       </router-link>
 
       <nav class="encabezado-principal__nav gt-sm">
@@ -55,9 +58,19 @@
                 :key="opcionDestacada.nombre"
                 :to="opcionDestacada.enlace"
                 class="mega-menu__tarjeta"
+                :class="{ 'mega-menu__tarjeta--con-imagen': Boolean(opcionDestacada.imagen) }"
               >
-                <q-icon :name="opcionDestacada.icono" size="34px" />
-                <span>{{ opcionDestacada.nombre }}</span>
+                <img
+                  v-if="opcionDestacada.imagen"
+                  :src="opcionDestacada.imagen"
+                  :alt="opcionDestacada.nombre"
+                  loading="lazy"
+                />
+                <template v-else>
+                  <q-icon :name="opcionDestacada.icono" size="34px" />
+                  <span>{{ opcionDestacada.nombre }}</span>
+                </template>
+                <span v-if="opcionDestacada.imagen">{{ opcionDestacada.nombre }}</span>
               </router-link>
             </div>
           </div>
@@ -109,6 +122,17 @@
 import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import MenuCategorias from './MenuCategorias.vue'
+import logoPuntoTecnologico from 'src/assets/imagenes/marca/logo-punto-tecnologico.png'
+import imagenAlmacenamientos from 'assets/imagenes/productos/categoria-almacenamientos.png'
+import imagenGraficas from 'assets/imagenes/productos/categoria-graficas.png'
+import imagenProcesadores from 'assets/imagenes/productos/categoria-procesadores.png'
+import imagenRam from 'assets/imagenes/productos/categoria-ram.png'
+import imagenLaptopEstudio from 'assets/imagenes/categorias/laptop estudio.jpg'
+import imagenLaptopGaming from 'assets/imagenes/categorias/laptop gaming.jpg'
+import imagenMonitores from 'assets/imagenes/categorias/monitores.avif'
+import imagenMouse from 'assets/imagenes/categorias/mouse.avif'
+import imagenStreaming from 'assets/imagenes/categorias/streaming.jpg'
+import imagenTeclados from 'assets/imagenes/categorias/teclados.avif'
 import { useCarritoStore } from 'src/stores/carritoStore'
 import 'src/css/components/layout.css'
 
@@ -143,10 +167,10 @@ const gruposMenu = [
       { nombre: 'Enfriamientos', enlace: '/buscar?q=enfriamiento' },
     ],
     destacadas: [
-      { nombre: 'Procesadores', enlace: '/categoria/procesadores', icono: 'memory' },
-      { nombre: 'RAM', enlace: '/categoria/memorias-ram', icono: 'developer_board' },
-      { nombre: 'Graficas', enlace: '/categoria/tarjetas-graficas', icono: 'view_in_ar' },
-      { nombre: 'SSD / NVMe', enlace: '/categoria/almacenamientos', icono: 'storage' },
+      { nombre: 'Procesadores', enlace: '/categoria/procesadores', icono: 'memory', imagen: imagenProcesadores },
+      { nombre: 'RAM', enlace: '/categoria/memorias-ram', icono: 'developer_board', imagen: imagenRam },
+      { nombre: 'Graficas', enlace: '/categoria/tarjetas-graficas', icono: 'view_in_ar', imagen: imagenGraficas },
+      { nombre: 'SSD / NVMe', enlace: '/categoria/almacenamientos', icono: 'storage', imagen: imagenAlmacenamientos },
     ],
   },
   {
@@ -165,10 +189,10 @@ const gruposMenu = [
       { nombre: 'Mandos', enlace: '/buscar?q=mando' },
     ],
     destacadas: [
-      { nombre: 'Monitores', enlace: '/buscar?q=monitor', icono: 'desktop_windows' },
-      { nombre: 'Teclados', enlace: '/buscar?q=teclado', icono: 'keyboard' },
-      { nombre: 'Mouses', enlace: '/buscar?q=mouse', icono: 'mouse' },
-      { nombre: 'Streaming', enlace: '/buscar?q=streaming', icono: 'videocam' },
+      { nombre: 'Monitores', enlace: '/buscar?q=monitor', icono: 'desktop_windows', imagen: imagenMonitores },
+      { nombre: 'Teclados', enlace: '/buscar?q=teclado', icono: 'keyboard', imagen: imagenTeclados },
+      { nombre: 'Mouses', enlace: '/buscar?q=mouse', icono: 'mouse', imagen: imagenMouse },
+      { nombre: 'Streaming', enlace: '/buscar?q=streaming', icono: 'videocam', imagen: imagenStreaming },
     ],
   },
   {
@@ -184,10 +208,10 @@ const gruposMenu = [
       { nombre: 'Almacenamiento laptop', enlace: '/buscar?q=ssd%20laptop' },
     ],
     destacadas: [
-      { nombre: 'Gaming', enlace: '/categoria/laptops', icono: 'sports_esports' },
-      { nombre: 'Trabajo', enlace: '/categoria/laptops', icono: 'business_center' },
-      { nombre: 'Estudio', enlace: '/categoria/laptops', icono: 'school' },
-      { nombre: 'Upgrade', enlace: '/buscar?q=upgrade%20laptop', icono: 'upgrade' },
+      { nombre: 'Gaming', enlace: '/categoria/laptops', icono: 'sports_esports', imagen: imagenLaptopGaming },
+      { nombre: 'Trabajo', enlace: '/categoria/laptops', icono: 'business_center', imagen: imagenLaptopEstudio },
+      { nombre: 'Estudio', enlace: '/categoria/laptops', icono: 'school', imagen: imagenLaptopEstudio },
+      { nombre: 'Upgrade', enlace: '/buscar?q=upgrade%20laptop', icono: 'upgrade', imagen: imagenRam },
     ],
   },
 ]
@@ -199,3 +223,5 @@ function buscarProductos() {
   router.push({ path: '/buscar', query: { q: consulta } })
 }
 </script>
+
+

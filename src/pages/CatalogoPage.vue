@@ -103,7 +103,7 @@ import { useCatalogo } from 'src/composables/useCatalogo'
 import { usePaginacion } from 'src/composables/usePaginacion'
 import 'src/css/pages/catalogo.css'
 
-useMeta({ title: 'Catalogo | Mi PC Computadoras' })
+useMeta({ title: 'Catalogo | Punto Tecnologico' })
 
 const catalogoStore = useCatalogoStore()
 const {

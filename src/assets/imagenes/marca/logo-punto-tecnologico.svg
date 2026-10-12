@@ -1,0 +1,9 @@
+<svg width="280" height="76" viewBox="0 0 280 76" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="titulo descripcion">
+  <title id="titulo">Punto Tecnologico</title>
+  <desc id="descripcion">Marca compacta de Punto Tecnologico para encabezado web.</desc>
+  <path d="M18 16h42l11 15-11 15H18V16Z" fill="#141428" stroke="#00FF00" stroke-width="5"/>
+  <path d="M28 27h22c7 0 11 3 11 9s-4 10-11 10H39v12H28V27Zm11 9v7h9c2 0 4-1 4-4 0-2-2-3-4-3h-9Z" fill="#FFFFFF"/>
+  <text x="82" y="40" fill="#FFFFFF" font-family="Impact, Inter, Arial Black, Arial, sans-serif" font-size="33" font-weight="900" letter-spacing="1">PUNTO</text>
+  <text x="86" y="60" fill="#FFD700" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="900" letter-spacing="1.2">TECNOLOGICO</text>
+  <path d="M80 66h152" stroke="#00FF00" stroke-width="4" stroke-linecap="round"/>
+</svg>

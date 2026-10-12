@@ -1,4 +1,4 @@
-import { formatearPrecio } from './formatearPrecio'
+import { formatearPrecio } from './formatearPrecio.js'
 
 export function construirMensajeWhatsapp({
   productosCotizacion,
@@ -9,7 +9,7 @@ export function construirMensajeWhatsapp({
 }) {
   const lineasProductos = productosCotizacion
     .map((productoCarrito, indice) => {
-      const subtotal = productoCarrito.precio * productoCarrito.cantidad
+      const subtotal = productoCarrito.subtotal
 
       return `${indice + 1}. ${productoCarrito.nombre}
    Cantidad: ${productoCarrito.cantidad}

@@ -1,9 +1,9 @@
-<template>
-  <section v-revelar="{ efecto: 'subir' }" class="seccion-contenido">
+﻿<template>
+  <section v-if="categorias.length" v-revelar="{ efecto: 'subir' }" class="seccion-contenido">
     <div v-revelar="{ efecto: 'subir', retraso: 80 }" class="seccion-contenido__encabezado">
       <div>
-        <p>Categorias</p>
-        <h2>Encuentra por tipo de producto</h2>
+        <p>{{ etiqueta }}</p>
+        <h2>{{ titulo }}</h2>
       </div>
     </div>
 
@@ -24,5 +24,7 @@ import TarjetaCategoria from 'components/catalogo/TarjetaCategoria.vue'
 
 defineProps({
   categorias: { type: Array, default: () => [] },
+  etiqueta: { type: String, default: 'Categorias' },
+  titulo: { type: String, default: 'Encuentra por tipo de producto' },
 })
 </script>

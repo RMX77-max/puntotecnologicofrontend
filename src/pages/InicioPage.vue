@@ -1,55 +1,77 @@
-<template>
-  <q-page class="pagina-inicio">
+﻿<template>
+  <q-page class="pagina-inicio pagina-inicio--punto">
     <q-inner-loading :showing="catalogoStore.cargando" color="primary" />
 
     <BannerPromocional :banners="bannersPrincipales" />
 
+    <section v-revelar="{ efecto: 'subir' }" class="seccion-contenido punto-zonas-home">
+      <div v-revelar="{ efecto: 'subir', retraso: 80 }" class="seccion-contenido__encabezado">
+        <div>
+          <p>Zonas gamer</p>
+          <h2>Busca por setup, categoria o componente</h2>
+        </div>
+      </div>
+
+      <div class="punto-zonas-home__grid">
+        <router-link
+          v-for="(zona, indice) in zonasGamer"
+          :key="zona.texto"
+          v-revelar="{ efecto: 'subir', retraso: 110 + indice * 65 }"
+          :to="zona.enlace"
+          class="punto-zonas-home__item"
+        >
+          <q-icon :name="zona.icono" size="28px" />
+          <span>{{ zona.texto }}</span>
+          <small>{{ zona.descripcion }}</small>
+        </router-link>
+      </div>
+    </section>
+
     <SeccionBannerProductos
-      etiqueta="Ofertas"
-      titulo="Ofertas imperdibles"
+      etiqueta="Promociones y ofertas"
+      titulo="Ofertas activas"
       :productos="productosOfertas"
-      etiqueta-banner="Banner promocional"
-      titulo-banner="Espacio para banner de ofertas"
-      descripcion-banner="Aqui ira una campana comercial junto a productos destacados."
+      etiqueta-banner="Banners"
+      titulo-banner="Promociones principales"
+      descripcion-banner="Espacio para banners de temporada, combos gamer y descuentos destacados."
       icono-banner="local_offer"
       variante="compacta"
       :banner="bannerOfertas"
     />
 
-    <SeccionBannerProductos
-      etiqueta="Categoria destacada"
-      titulo="Notebooks y PCs armados"
-      :productos="productosNotebooks"
-      etiqueta-banner="Banner de categoria"
-      titulo-banner="Espacio para notebooks y equipos armados"
-      descripcion-banner="Banner amplio para una familia de productos con articulos al lado."
-      icono-banner="important_devices"
-      variante="ancha"
-      :banner="bannerNotebooks"
-    />
-
-    <section
-      v-revelar="{ efecto: 'subir' }"
-      class="banner-horizontal-home"
-      :class="{ 'banner-horizontal-home--con-imagen': Boolean(bannerHorizontal?.imagen_url) }"
-    >
-      <img
-        v-if="bannerHorizontal?.imagen_url"
-        :src="bannerHorizontal.imagen_url"
-        :alt="bannerHorizontal.titulo || 'Banner horizontal'"
-      />
-      <template v-else>
-        <q-icon name="panorama_wide_angle" size="46px" />
+    <section v-revelar="{ efecto: 'subir' }" class="seccion-contenido ultimas-busquedas-home">
+      <div v-revelar="{ efecto: 'subir', retraso: 80 }" class="seccion-contenido__encabezado">
         <div>
-          <span>Banner horizontal</span>
-          <strong>Espacio para campana extendida</strong>
-          <small>Banner ancho para liquidaciones, temporadas o marcas destacadas.</small>
+          <p>Ultimas busquedas</p>
+          <h2>Accesos rapidos</h2>
         </div>
-      </template>
+      </div>
+
+      <div class="ultimas-busquedas-home__lista">
+        <router-link
+          v-for="busqueda in busquedasRapidas"
+          :key="busqueda.texto"
+          :to="busqueda.enlace"
+          class="ultimas-busquedas-home__item"
+        >
+          <q-icon :name="busqueda.icono" size="22px" />
+          <span>{{ busqueda.texto }}</span>
+        </router-link>
+      </div>
     </section>
 
-    <SeccionCategorias :categorias="categoriasInicio" />
-    <SeccionProductosPopulares :productos="productosPopularesInicio" />
+    <SeccionCategorias
+      etiqueta="Categorias"
+      titulo="Todo para completar tu estacion"
+      :categorias="categoriasInicio"
+    />
+
+    <SeccionProductosPopulares
+      etiqueta="Los mas vendidos"
+      titulo="Productos favoritos de la tienda"
+      :productos="productosMasVendidos"
+    />
+
     <SeccionUbicacion :configuracion="configuracionStore.configuracion" />
   </q-page>
 </template>
@@ -67,7 +89,7 @@ import { useConfiguracionStore } from 'src/stores/configuracionStore'
 import 'src/css/pages/inicio.css'
 
 useMeta({
-  title: 'Mi PC Computadoras | Catalogo tecnologico',
+  title: 'Punto Tecnologico | Catalogo tecnologico',
   meta: {
     description: {
       name: 'description',
@@ -79,6 +101,24 @@ useMeta({
 const catalogoStore = useCatalogoStore()
 const configuracionStore = useConfiguracionStore()
 
+const zonasGamer = [
+  { texto: 'Perifericos', descripcion: 'Mouse, teclado, audio y setup', enlace: '/buscar?q=perifericos', icono: 'keyboard' },
+  { texto: 'Monitores', descripcion: 'Pantallas para jugar y trabajar', enlace: '/buscar?q=monitor', icono: 'desktop_windows' },
+  { texto: 'Laptops', descripcion: 'Portatiles gamer y oficina', enlace: '/categoria/laptops', icono: 'laptop' },
+  { texto: 'Componentes', descripcion: 'RAM, SSD, fuentes y upgrades', enlace: '/catalogo', icono: 'memory' },
+]
+
+const busquedasRapidas = [
+  { texto: 'Componentes', enlace: '/catalogo', icono: 'memory' },
+  { texto: 'Laptops', enlace: '/categoria/laptops', icono: 'laptop' },
+  { texto: 'Perifericos', enlace: '/buscar?q=perifericos', icono: 'keyboard' },
+  { texto: 'Monitores', enlace: '/buscar?q=monitor', icono: 'desktop_windows' },
+  { texto: 'Impresoras', enlace: '/buscar?q=impresora', icono: 'print' },
+  { texto: 'Accesorios', enlace: '/buscar?q=accesorio', icono: 'extension' },
+  { texto: 'Teclados mecanicos', enlace: '/buscar?q=teclado%20mecanico', icono: 'keyboard_alt' },
+  { texto: 'Mouses', enlace: '/buscar?q=mouse', icono: 'mouse' },
+]
+
 function bannersPorUbicacion(ubicacion) {
   return catalogoStore.banners
     .filter((banner) => banner.ubicacion === ubicacion)
@@ -87,31 +127,22 @@ function bannersPorUbicacion(ubicacion) {
 
 const bannersPrincipales = computed(() => bannersPorUbicacion('principal'))
 const bannerOfertas = computed(() => bannersPorUbicacion('ofertas')[0] || null)
-const bannerNotebooks = computed(() => bannersPorUbicacion('notebooks')[0] || null)
-const bannerHorizontal = computed(() => bannersPorUbicacion('horizontal')[0] || null)
 const categoriasInicio = computed(() => catalogoStore.categoriasDestacadas.slice(0, 8))
 const productosDisponibles = computed(() =>
   catalogoStore.productos.filter((producto) => producto.stock_publico?.disponible),
 )
 const productosOfertas = computed(() => {
-  const ofertas = catalogoStore.ofertas.slice(0, 8)
+  const ofertas = catalogoStore.ofertas.slice(0, 3)
 
   if (ofertas.length) return ofertas
 
   return productosDisponibles.value.slice(0, 3)
 })
-const productosNotebooks = computed(() => {
-  const portatiles = productosDisponibles.value
-    .filter((producto) => {
-      const texto = `${producto.nombre} ${producto.categoria?.nombre || ''}`.toLowerCase()
+const productosMasVendidos = computed(() => {
+  const destacados = catalogoStore.productosPopulares.slice(0, 8)
 
-      return texto.includes('laptop') || texto.includes('portatil') || texto.includes('notebook')
-    })
-    .slice(0, 2)
+  if (destacados.length) return destacados
 
-  if (portatiles.length) return portatiles
-
-  return productosDisponibles.value.slice(3, 5)
+  return productosDisponibles.value.slice(3, 11)
 })
-const productosPopularesInicio = computed(() => productosDisponibles.value.slice(5, 13))
 </script>

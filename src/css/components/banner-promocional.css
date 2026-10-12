@@ -45,7 +45,7 @@
 .banner-promocional__contenido p,
 .banner-promocional__placeholder span {
   margin: 0 0 10px;
-  color: #2dd4bf;
+  color: #00ff00;
   font-size: 13px;
   font-weight: 950;
   letter-spacing: 0.1em;
@@ -105,7 +105,7 @@
 
 .banner-promocional__placeholder .q-icon {
   margin-bottom: 14px;
-  color: #ffcc00;
+  color: #ffd700;
 }
 
 .banner-promocional .q-carousel__navigation .q-btn,
@@ -126,4 +126,18 @@
   .banner-promocional__placeholder {
     width: min(100% - 24px, 1240px);
   }
+}
+
+/* Punto Tecnologico: banner promocional sin degradados */
+.banner-promocional,
+.banner-promocional__contenido,
+.banner-promocional__placeholder {
+  background: #151528;
+  color: #ffffff;
+}
+
+.banner-promocional__etiqueta,
+.banner-promocional__accion {
+  background: #19d84f;
+  color: #101020;
 }
